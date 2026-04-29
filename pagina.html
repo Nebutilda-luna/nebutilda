@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamín Valenzuela | De la Repostería al Código</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#10b981', // Emerald-500
+                        dark: '#020617',   // Slate-950
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        [v-cloak] { display: none; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-dark text-slate-300 font-sans selection:bg-accent selection:text-dark">
+
+    <div id="app" v-cloak>
+        <nav class="fixed top-0 w-full z-50 border-b border-slate-800 glass">
+            <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                <span class="font-mono text-accent font-bold text-lg tracking-tighter">BV.dev</span>
+                <div class="flex gap-8 text-sm font-medium">
+                    <a href="#origen" class="hover:text-accent transition-colors">Origen</a>
+                    <a href="#stack" class="hover:text-accent transition-colors">Stack</a>
+                    <a href="#lifestyle" class="hover:text-accent transition-colors">Vida</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden hero-gradient">
+            <div class="max-w-4xl mx-auto px-6 text-center z-10">
+                <div class="hero-content opacity-0 translate-y-10">
+                    <span class="inline-block py-1 px-3 rounded-full bg-accent/10 text-accent text-xs font-bold mb-6 border border-accent/20 tracking-widest uppercase">
+                        Estudiante de Ingeniería en Informática
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                        De crear recetas a <br>
+                        <span class="text-accent italic">programar soluciones</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Soy Benjamín Valenzuela. Aplico la disciplina de la repostería y el liderazgo deportivo al desarrollo de software preciso y eficiente.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#stack" class="px-8 py-4 bg-accent text-dark font-bold rounded-xl hover:scale-105 transition-transform">Ver Tecnologías</a>
+                        <a href="https://github.com" target="_blank" class="px-8 py-4 border border-slate-700 bg-slate-900/50 rounded-xl hover:bg-slate-800 transition-colors flex items-center gap-2">
+                            <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="origen" class="py-24 max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal-left opacity-0">
+                    <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                        <i data-lucide="history" class="text-accent"></i> El Origen
+                    </h2>
+                    <p class="leading-relaxed">
+                        Mi camino no empezó entre líneas de código, sino entre balanzas y hornos. Como <strong>ex-estudiante de gastronomía</strong> especializado en repostería, aprendí que la diferencia entre el éxito y el fracaso reside en la precisión de los gramos y el tiempo exacto.
+                    </p>
+                    <p class="leading-relaxed">
+                        Esa misma **atención al detalle** es la que hoy aplico al depurar un script en Python o estructurar una interfaz con Vue. La disciplina de la cocina y mi etapa como **Vicepresidente** en el liceo politécnico forjaron mi capacidad de liderar con calma y resolver problemas bajo presión.
+                    </p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl reveal-right opacity-0">
+                    <div class="space-y-4">
+                        <div v-for="skill in softSkills" :key="skill.name" class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center text-accent">
+                                <i :data-lucide="skill.icon"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">{{ skill.name }}</h4>
+                                <p class="text-xs text-slate-500">{{ skill.desc }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stack" class="py-24 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-white mb-12">Stack Tecnológico</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div v-for="tech in techStack" :key="tech.name" 
+                         class="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-accent/50 transition-all cursor-default">
+                        <i :data-lucide="tech.icon" class="w-10 h-10 mx-auto mb-4 text-slate-500 group-hover:text-accent transition-colors"></i>
+                        <h3 class="font-mono text-white text-sm tracking-widest uppercase">{{ tech.name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lifestyle" class="py-24 max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Más allá del código</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div v-for="item in interests" :key="item.title" 
+                     class="p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-dark border border-slate-800 hover:-translate-y-2 transition-transform">
+                    <i :data-lucide="item.icon" class="w-8 h-8 text-accent mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">{{ item.title }}</h3>
+                    <p class="text-sm leading-relaxed text-slate-400">{{ item.desc }}</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 border-t border-slate-800">
+            <div class="max-w-6xl mx-auto px-6 flex flex-col md:row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-white font-bold text-xl mb-2">Benjamín Valenzuela</h3>
+                    <p class="text-sm text-slate-500">Construyendo el futuro, un bit a la vez.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-400 hover:text-accent transition-colors"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-accent transition-colors"><i data-lucide="github"></i></a>
+                    <a href="mailto:benjamin@ejemplo.com" class="text-slate-400 hover:text-accent transition-colors"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const techStack = [
+                    { name: 'HTML5', icon: 'file-type-2' },
+                    { name: 'CSS3', icon: 'palette' },
+                    { name: 'JavaScript', icon: 'code-2' },
+                    { name: 'Python', icon: 'terminal' },
+                    { name: 'VS Code', icon: 'layout' },
+                    { name: 'GitHub', icon: 'github' }
+                ];
+
+                const softSkills = [
+                    { name: 'Liderazgo Eficaz', icon: 'users', desc: 'Ex-Vicepresidente con visión resolutiva.' },
+                    { name: 'Autodisciplina', icon: 'target', desc: 'Capacidad de aprendizaje autodidacta.' },
+                    { name: 'Calma', icon: 'wind', desc: 'Actitud amigable y analítica ante errores.' }
+                ];
+
+                const interests = [
+                    { title: 'Deporte y Salud', icon: 'dumbbell', desc: 'Voleibol y entrenamiento físico como pilares de disciplina mental.' },
+                    { title: 'Cocina Creativa', icon: 'utensils', desc: 'La repostería me enseñó que la paciencia y el orden crean grandes resultados.' },
+                    { title: 'Gaming', icon: 'gamepad-2', desc: 'Entusiasta de los videojuegos de terror y lucha. Estrategia y reflejos.' }
+                ];
+
+                onMounted(() => {
+                    // Inicializar Iconos
+                    lucide.createIcons();
+
+                    // Animaciones GSAP
+                    gsap.to('.hero-content', { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1.2, 
+                        ease: 'power4.out',
+                        delay: 0.3
+                    });
+
+                    gsap.from('.reveal-left', {
+                        scrollTrigger: '.reveal-left',
+                        x: -50,
+                        opacity: 0,
+                        duration: 1,
+                        ease: 'power3.out'
+                    });
+
+                    // Simple fade in para secciones al hacer scroll
+                    const sections = ['#origen', '#stack', '#lifestyle'];
+                    sections.forEach(s => {
+                        gsap.to(s, {
+                            scrollTrigger: {
+                                trigger: s,
+                                start: 'top 80%',
+                            },
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8
+                        });
+                    });
+                });
+
+                return { techStack, softSkills, interests };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
