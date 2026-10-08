@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="trabajo clases" id="58ED344D-3F3B-C3CC-5767-B0D8FF0B66C9" version="3.5">
+<createdBy>W608-PCXX</createdBy>
+<createdTime>2026-10-08 16:56:11 UTC</createdTime>
+<ownerDesignName>trabajo clases</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>58ED344D-3F3B-C3CC-5767-B0D8FF0B66C9</designId>
+</OSDM_Design>
